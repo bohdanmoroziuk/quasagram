@@ -13,7 +13,9 @@
           </div>
         </div>
         <div class="col-4">
-          Profile
+          <div class="fixed">
+            <profile-bar />
+          </div>
         </div>
       </div>
     </div>
@@ -30,6 +32,7 @@ export default {
   },
   components: {
     PostCard: () => import('components/PostCard.vue'),
+    ProfileBar: () => import('components/ProfileBar.vue'),
   },
 };
 </script>
