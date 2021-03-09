@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <div class="constrain q-pa-md">
+    <div class="constrain1 q-pa-md">
       <div class="row q-col-gutter-lg">
         <div class="col-12 col-sm-8">
           <div>
