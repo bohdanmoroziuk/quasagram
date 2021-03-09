@@ -2,7 +2,7 @@
   <q-page>
     <div class="constrain q-pa-md">
       <div class="row q-col-gutter-lg">
-        <div class="col-8">
+        <div class="col-12 col-sm-8">
           <div>
             <post-card
               v-for="post of posts"
@@ -12,7 +12,7 @@
             />
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-4 large-screen-only">
           <div class="fixed">
             <profile-bar />
           </div>
