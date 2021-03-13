@@ -3,14 +3,18 @@
     <div class="constrain1 q-pa-md">
       <div class="row q-col-gutter-lg">
         <div class="col-12 col-sm-8">
-          <div>
+          <post-card-skeleton v-if="loading" />
+          <template v-else-if="hasPosts">
             <post-card
               v-for="post of posts"
               :key="post.id"
               :post="post"
               class="q-mb-md"
             />
-          </div>
+          </template>
+          <h5 v-else class="text-center text-grey">
+            No posts yet.
+          </h5>
         </div>
         <div class="col-4 large-screen-only">
           <div class="fixed">
@@ -23,16 +27,31 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'Index',
-  data() {
-    return {
-      posts: [],
-    };
+  computed: {
+    ...mapState('posts', ['posts', 'loading']),
+    ...mapGetters('posts', ['hasPosts']),
+  },
+  methods: {
+    ...mapActions('posts', ['getPosts']),
+  },
+  async created() {
+    try {
+      await this.getPosts();
+    } catch {
+      this.$q.dialog({
+        title: 'Error',
+        message: 'Could not download posts',
+      });
+    }
   },
   components: {
     PostCard: () => import('components/PostCard.vue'),
     ProfileBar: () => import('components/ProfileBar.vue'),
+    PostCardSkeleton: () => import('components/PostCardSkeleton.vue'),
   },
 };
 </script>
