@@ -87,6 +87,8 @@
 
 import { uid } from 'quasar';
 
+import { getLocationDetails } from 'src/services/geocode';
+
 export default {
   name: 'NewPostForm',
   data() {
@@ -204,8 +206,9 @@ export default {
           const { latitude, longitude } = position.coords;
 
           this.isLocationLoading = true;
-          this.$axios.get(`https://geocode.xyz/${latitude},${longitude}?geoit=JSON`)
-            .then((response) => [response.data.city, response.data.country].join(', '))
+
+          getLocationDetails(latitude, longitude)
+            .then((data) => [data.city, data.country].join(', '))
             .then((location) => { this.location = location; })
             .catch((error) => { this.reportError(error); })
             .finally(() => { this.isLocationLoading = false; });
