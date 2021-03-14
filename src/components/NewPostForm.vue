@@ -1,7 +1,7 @@
 <template>
   <form
     class="new-post-form"
-    @submit="$emit('submit', post)"
+    @submit.prevent="$emit('submit', post)"
   >
     <div class="camera-frame q-pa-md">
       <video
@@ -74,6 +74,7 @@
         rounded
         color="primary"
         label="Post image"
+        type="submit"
       />
     </div>
   </form>
@@ -101,14 +102,16 @@ export default {
   computed: {
     post() {
       const { caption, location, photo } = this;
+      const formData = new FormData();
+      const id = uid();
 
-      return {
-        id: uid(),
-        caption,
-        location,
-        photo,
-        createdAt: Date.now(),
-      };
+      formData.append('id', id);
+      formData.append('caption', caption);
+      formData.append('location', location);
+      formData.append('createdAt', Date.now());
+      formData.append('file', photo, id.concat('.png'));
+
+      return formData;
     },
   },
   methods: {

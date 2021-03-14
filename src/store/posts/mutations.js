@@ -1,13 +1,25 @@
 export const getPostsRequest = (state) => {
-  state.loading = true;
+  state.arePostsLoading = true;
 };
 
 export const getPostsSuccess = (state, posts) => {
-  state.loading = false;
+  state.arePostsLoading = false;
   state.posts = posts;
 };
 
 export const getPostsFailure = (state) => {
-  state.loading = false;
+  state.arePostsLoading = false;
   state.posts = [];
+};
+
+export const createPostRequest = (state) => {
+  state.isPostCreating = true;
+};
+
+export const createPostSuccess = (state) => {
+  state.isPostCreating = false;
+};
+
+export const createPostFailure = (state) => {
+  state.isPostCreating = false;
 };

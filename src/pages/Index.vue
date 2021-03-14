@@ -3,7 +3,7 @@
     <div class="constrain1 q-pa-md">
       <div class="row q-col-gutter-lg">
         <div class="col-12 col-sm-8">
-          <post-card-skeleton v-if="loading" />
+          <post-card-skeleton v-if="arePostsLoading" />
           <template v-else-if="hasPosts">
             <post-card
               v-for="post of posts"
@@ -32,7 +32,7 @@ import { mapState, mapGetters, mapActions } from 'vuex';
 export default {
   name: 'Index',
   computed: {
-    ...mapState('posts', ['posts', 'loading']),
+    ...mapState('posts', ['posts', 'arePostsLoading']),
     ...mapGetters('posts', ['hasPosts']),
   },
   methods: {
