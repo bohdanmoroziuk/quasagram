@@ -10,8 +10,11 @@
   "author": "Bogdan Morozyuk <bogdan7morozyuk@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "busboy": "^0.3.1",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "firebase-admin": "^9.5.0"
+    "firebase-admin": "^9.5.0",
+    "nanoid": "^3.1.21"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
