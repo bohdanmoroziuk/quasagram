@@ -21,6 +21,7 @@
     <div class="text-center q-pa-md">
       <q-btn
         v-if="hasCameraSupport"
+        :disable="imageCaptured"
         round
         size="lg"
         color="grey-10"
@@ -44,7 +45,7 @@
       <q-input
         class="col col-sm-6"
         v-model="caption"
-        label="Caption"
+        label="Caption *"
         dense
       />
     </div>
@@ -75,6 +76,7 @@
         color="primary"
         label="Post image"
         type="submit"
+        :disable="!photo || !caption"
       />
     </div>
   </form>
