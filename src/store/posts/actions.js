@@ -1,12 +1,12 @@
-import axios from 'axios';
+import * as PostsService from 'src/services/posts';
 
 export const getPosts = async ({ commit }) => {
   try {
     commit('getPostsRequest');
 
-    const response = await axios.get(`${process.env.API}/posts`);
+    const posts = await PostsService.getPosts();
 
-    commit('getPostsSuccess', response.data);
+    commit('getPostsSuccess', posts);
   } catch (error) {
     commit('getPostsFailure');
     throw error;
@@ -17,7 +17,7 @@ export const createPost = async ({ commit }, data) => {
   try {
     commit('createPostRequest');
 
-    await axios.post(`${process.env.API}/posts`, data);
+    await PostsService.createPost(data);
 
     commit('createPostSuccess');
   } catch (error) {
