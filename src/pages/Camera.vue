@@ -22,6 +22,8 @@ export default {
 
     async onSubmit(data) {
       try {
+        this.$q.loading.show();
+
         await this.createPost(data);
 
         this.$router.push('/').catch(() => {});
@@ -36,6 +38,8 @@ export default {
           title: 'Error',
           message: 'Could not create post!',
         });
+      } finally {
+        this.$q.loading.hide();
       }
     },
   },
