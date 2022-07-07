@@ -1,7 +1,7 @@
 {
   "name": "quasagram",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
+  "description": "A social media app where you can post your photos",
   "productName": "Quasagram",
   "author": "Bogdan Morozyuk <bogdan7morozyuk@gmail.com>",
   "private": true,
